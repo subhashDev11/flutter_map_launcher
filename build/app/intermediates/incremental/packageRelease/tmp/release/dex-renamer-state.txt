@@ -1,4 +1,0 @@
-#Sun Feb 19 18:53:36 IST 2023
-base.0=/home/root1/Documents/me/test_pro/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
