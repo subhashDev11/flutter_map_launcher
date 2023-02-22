@@ -1,6 +1,6 @@
 {
-    "name": "test_pro",
-    "short_name": "test_pro",
+    "name": "test_today",
+    "short_name": "test_today",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

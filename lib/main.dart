@@ -1,59 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_today/core/core.dart';
 
-void main() => runApp(const MyApp());
+import 'presentation/cubit/data_cubit/data_cubit.dart';
+import 'presentation/screen/display_data_screen.dart';
+
+void main() {
+  locator();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: const TabBar(
-              tabs: <Widget>[
-                Tab(icon: Icon(Icons.home)),
-                Tab(icon: Icon(Icons.account_circle))
-              ],
-            ),
-            title: const Text('Tab Bar Sample'),
-          ),
-          body: const TabBarView(children: [
-            HomeFregView(),
-            ProfileFregView()
-          ]),
+    return BlocProvider(
+      create: (_) => DataCubit(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
         ),
+        home: const DisplayScreen(),
       ),
-    );
-  }
-}
-
-class HomeFregView extends StatelessWidget {
-  const HomeFregView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green.shade100,
-      child: const Center(
-            child: Text('Welcome to the Home Page'),
-          ),
-    );
-  }
-}
-
-class ProfileFregView extends StatelessWidget {
-  const ProfileFregView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red.shade100,
-      child: const Center(
-            child: Text('Welcome to the Profile Page'),
-          ),
     );
   }
 }
