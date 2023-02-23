@@ -38,6 +38,15 @@ class DataCubit extends Cubit<DataState> {
         currentLoc?.longitude ?? 0,
       ),
     ));
+    if (currentLoc != null) {
+      final address = await LocationUtility.getAddressFromPosition(
+        currentLoc.latitude,
+        currentLoc.longitude,
+      );
+      emit(state.copyWith(
+        currentAddress: address?.addressLine,
+      ));
+    }
   }
 
   Future<void> getData() async {

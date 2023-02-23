@@ -74,7 +74,7 @@ class ScreenContainer extends StatelessWidget with AppStyleMixin {
       appBar: myAppBar ??
           (title != null && showAppBar
               ? AppBar(
-                  backgroundColor: theme.scaffoldBackgroundColor,
+                  backgroundColor: theme.primaryColor,
                   leadingWidth: leadingWidth ?? (showLeading ? 60 : 5),
                   titleSpacing: 0,
                   elevation: appBarElevation,
@@ -138,6 +138,7 @@ class ScreenContainer extends StatelessWidget with AppStyleMixin {
                                     fontFamily: 'Roboto',
                                     fontSize: bigTitle ?? false ? 24 : 20,
                                     fontWeight: FontWeight.w600,
+                                    color: Colors.white,
                                   ),
                             ),
                           ),
@@ -203,7 +204,7 @@ class ScreenContainer extends StatelessWidget with AppStyleMixin {
     if (context.isDarkTheme()) {
       return Colors.white;
     } else {
-      return Colors.black87;
+      return Colors.white;
     }
   }
 }

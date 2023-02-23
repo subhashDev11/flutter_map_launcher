@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_wrapper.dart';
 import 'package:responsive_framework/utils/scroll_behavior.dart';
 import 'package:test_today/core/route/route_generator.dart';
+import 'package:test_today/core/theme/theme.dart';
 import 'package:test_today/core/utils/logger_utils.dart';
 import 'package:test_today/flavors.dart';
 
@@ -41,6 +42,7 @@ class _AppWidgetState extends State<AppWidget> with WidgetsBindingObserver {
           title: Flavors.title,
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter().appRouter,
+          theme: AppThemes.lightTheme,
           builder: (context, child) => ResponsiveWrapper.builder(
             BouncingScrollWrapper.builder(context, child!),
             defaultScale: true,

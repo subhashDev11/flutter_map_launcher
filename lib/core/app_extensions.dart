@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:test_today/core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -46,6 +47,12 @@ extension GetAge on DateTime {
 extension IsDarkTheme on BuildContext {
   bool isDarkTheme() {
     return Theme.of(this).brightness == Brightness.dark;
+  }
+}
+
+extension CurrentTheme on BuildContext {
+  ThemeData getTheme() {
+    return Theme.of(this);
   }
 }
 

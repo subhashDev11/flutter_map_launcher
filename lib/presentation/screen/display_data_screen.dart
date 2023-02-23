@@ -1,8 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:map_launcher/map_launcher.dart';
+import 'package:test_today/core/app_extensions.dart';
 import 'package:test_today/presentation/cubit/data_cubit/data_cubit.dart';
+import 'package:test_today/presentation/widgets/common/common_widgets.dart';
 
 import '../../core/app_enums.dart';
 
@@ -57,36 +60,54 @@ class _DisplayScreenState extends State<DisplayScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<DataCubit, DataState>(
       listener: (_, state) {
-        _launchMap(state);
+        // _launchMap(state);
       },
       listenWhen: (prev, next) =>
           (next.currentPosition != null && next.destAddress != null && next.destPosition != null),
       builder: (_, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Map Launcher'),
-          ),
-          body: Center(
-            child: InkWell(
-              onTap: state.launchStatus == LaunchStatus.launched
-                  ? () {
-                      if (state.launchStatus == LaunchStatus.launched) {
+        return ScreenContainer(
+          title: 'Location',
+          appBarElevation: 10,
+          child: Center(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              if (state.launchStatus == LaunchStatus.loading)
+                const CupertinoActivityIndicator()
+              else
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(25),
+                      child: Text('Live location - ${state.currentAddress ?? ''}'),
+                    ),
+                    GestureDetector(
+                      onTap: () {
                         _launchMap(state);
-                      }
-                    }
-                  : null,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: AnimatedTextKit(
-                  animatedTexts: [
-                    TypewriterAnimatedText(
-                      _launchStatusTitle(state.launchStatus),
-                    )
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
+                        ),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10),
+                          color: context.getTheme().primaryColor,
+                        ),
+                        child: Text(
+                          'Get Direction',
+                          style: context.getTheme().textTheme.titleMedium?.copyWith(
+                                color: Colors.white,
+                              ),
+                        ),
+                      ),
+                    ),
                   ],
-                ),
-              ),
-            ),
-          ),
+                )
+            ],
+          )),
         );
       },
     );

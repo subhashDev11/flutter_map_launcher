@@ -13,7 +13,6 @@ class AppThemes {
     colorScheme: ColorScheme.fromSeed(
       background: Colors.white,
       seedColor: ColorConstants.primaryColor,
-      secondary: ColorConstants.actionTextColor,
     ),
   ).copyWith(
     brightness: Brightness.light,
@@ -31,11 +30,6 @@ class AppThemes {
       color: Colors.black87,
     ),
     cardColor: Colors.white,
-    textTheme: lightThemeData.textTheme.copyWith(
-      labelLarge: lightThemeData.textTheme.labelLarge?.copyWith(
-        color: ColorConstants.actionTextColor,
-      ),
-    ),
     checkboxTheme: CheckboxThemeData(
       checkColor: MaterialStateProperty.all(Colors.black),
       fillColor: MaterialStateProperty.all(ColorConstants.primaryColor),
@@ -58,11 +52,6 @@ class AppThemes {
     textTheme: darkThemeData.textTheme
         .apply(
           fontFamily: 'Roboto',
-        )
-        .copyWith(
-          labelLarge: darkThemeData.textTheme.labelLarge?.copyWith(
-            color: ColorConstants.actionTextColor,
-          ),
         ),
     primaryTextTheme: darkThemeData.textTheme.apply(
       fontFamily: 'Roboto',
@@ -71,7 +60,6 @@ class AppThemes {
     scaffoldBackgroundColor: darkThemeData.scaffoldBackgroundColor,
     colorScheme: ColorScheme.fromSeed(
       seedColor: ColorConstants.primaryColor,
-      secondary: ColorConstants.actionTextColor,
     ),
     brightness: Brightness.dark,
     appBarTheme: darkThemeData.appBarTheme.copyWith(
@@ -93,7 +81,6 @@ class AppThemes {
       focusedBorder: OutlineInputBorder(
         borderSide: BorderSide(
           style: BorderStyle.solid,
-          color: ColorConstants.actionTextColor,
         ),
       ),
     ),

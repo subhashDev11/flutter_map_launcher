@@ -16,25 +16,21 @@ mixin AppStyleMixin<T extends StatelessWidget> {
         fontFamily: 'Roboto',
         fontSize: 17,
         fontWeight: FontWeight.w600,
-        color: context.isDarkTheme() ? null : ColorConstants.textTitleColor,
       );
 
   TextStyle? getSubtitleTheme(BuildContext context) => Theme.of(context).textTheme.titleMedium?.copyWith(
         fontFamily: 'Roboto',
         fontSize: 16,
         fontWeight: FontWeight.w500,
-        color: context.isDarkTheme() ? null : ColorConstants.textSubtitleColor,
       );
 
   TextStyle? getTitleTheme1(BuildContext context) => Theme.of(context).textTheme.titleMedium?.copyWith(
         fontFamily: 'Roboto',
         fontSize: 16,
-        color: context.isDarkTheme() ? null : ColorConstants.textTitle2Color,
         fontWeight: FontWeight.w500,
       );
 
   TextStyle? getTitle2Theme(BuildContext context) => Theme.of(context).textTheme.bodySmall?.copyWith(
-        fontFamily: 'Roboto',
         fontSize: 17,
         fontWeight: FontWeight.w600,
       );
@@ -55,7 +51,6 @@ mixin AppStyleMixin<T extends StatelessWidget> {
   TextStyle? getFooterTitleStyle(BuildContext context) => getTitle2Theme(context)?.copyWith(
         fontWeight: FontWeight.w500,
         fontSize: 14,
-        color: context.isDarkTheme() ? null : ColorConstants.textSubtitleColor.withOpacity(0.8),
       );
 
   bool isLandscape(BuildContext context) => MediaQuery.of(context).orientation == Orientation.landscape;
@@ -118,7 +113,7 @@ mixin AppStyleMixin<T extends StatelessWidget> {
   Color? getInputFillColor(BuildContext context, {VoidCallback? onTap, bool? isReadOnly}) {
     if (isReadOnly ?? false) {
       if (onTap == null) {
-        return context.isDarkTheme() ? null : ColorConstants.textFieldFillColor;
+        return context.isDarkTheme() ? null : context.getTheme().cardColor;
       } else {
         return context.isDarkTheme() ? null : Colors.white;
       }
@@ -126,7 +121,4 @@ mixin AppStyleMixin<T extends StatelessWidget> {
       return context.isDarkTheme() ? null : Colors.white;
     }
   }
-
-  Color getDividerColor(BuildContext context) =>
-      context.isDarkTheme() ? getTheme(context).dividerColor : ColorConstants.dividerColor;
 }

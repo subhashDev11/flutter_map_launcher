@@ -7,12 +7,14 @@ class DataState extends Equatable {
   final LatLng? currentPosition;
   final LatLng? destPosition;
   final String? destAddress;
+  final String? currentAddress;
 
   const DataState({
     this.currentPosition,
     this.destPosition,
     this.destAddress,
     this.data,
+    this.currentAddress,
     required this.isProcessing,
     required this.launchStatus,
   });
@@ -21,6 +23,7 @@ class DataState extends Equatable {
     this.currentPosition,
     this.destPosition,
     this.destAddress,
+    this.currentAddress,
     this.data,
     required this.isProcessing,
     required this.launchStatus,
@@ -32,9 +35,11 @@ class DataState extends Equatable {
     LatLng? currentPosition,
     LatLng? destPosition,
     String? destAddress,
+    String? currentAddress,
     LaunchStatus? launchStatus,
   }) {
     return DataState(
+      currentAddress: currentAddress ?? this.currentAddress,
       launchStatus: launchStatus ?? this.launchStatus,
       data: data ?? this.data,
       isProcessing: isProcessing ?? this.isProcessing,
@@ -50,6 +55,7 @@ class DataState extends Equatable {
         data,
         isProcessing,
         currentPosition,
+        currentAddress,
         destPosition,
         destAddress,
         launchStatus,
