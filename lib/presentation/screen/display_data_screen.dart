@@ -80,7 +80,14 @@ class _DisplayScreenState extends State<DisplayScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(25),
-                      child: Text('Live location - ${state.currentAddress ?? ''}'),
+                      child: Text(
+                        'Live location - ${state.currentAddress ?? ''}',
+                        textAlign: TextAlign.center,
+                        style: context.getTheme().textTheme.titleMedium?.copyWith(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                            ),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
