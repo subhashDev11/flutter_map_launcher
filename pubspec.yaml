@@ -39,6 +39,7 @@ dependencies:
   flutter_geocoder: ^0.2.2-nullsafety
   geocoding: ^2.0.5
   latlng:
+  animated_text_kit:
 
 
 

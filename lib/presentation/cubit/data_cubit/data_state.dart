@@ -2,6 +2,7 @@ part of 'data_cubit.dart';
 
 class DataState extends Equatable {
   final bool isProcessing;
+  final LaunchStatus launchStatus;
   final AddressResModel? data;
   final LatLng? currentPosition;
   final LatLng? destPosition;
@@ -13,6 +14,7 @@ class DataState extends Equatable {
     this.destAddress,
     this.data,
     required this.isProcessing,
+    required this.launchStatus,
   });
 
   const DataState.init({
@@ -21,6 +23,7 @@ class DataState extends Equatable {
     this.destAddress,
     this.data,
     required this.isProcessing,
+    required this.launchStatus,
   });
 
   DataState copyWith({
@@ -29,8 +32,10 @@ class DataState extends Equatable {
     LatLng? currentPosition,
     LatLng? destPosition,
     String? destAddress,
+    LaunchStatus? launchStatus,
   }) {
     return DataState(
+      launchStatus: launchStatus ?? this.launchStatus,
       data: data ?? this.data,
       isProcessing: isProcessing ?? this.isProcessing,
       currentPosition: currentPosition ?? this.currentPosition,
@@ -47,5 +52,6 @@ class DataState extends Equatable {
         currentPosition,
         destPosition,
         destAddress,
+        launchStatus,
       ];
 }

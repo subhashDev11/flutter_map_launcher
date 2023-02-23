@@ -1,23 +1,8 @@
-enum ViewOrientation {
-  horizontal,
-  vertical,
-}
-
-enum AppFilterOption {
-  filterByMonth,
-  filterByLocation,
-  filterByIndustry,
-  filterByBlock,
-  filterByEmployerId,
-  filterByEmployerSector,
-}
-
-enum MyJobActiveTab {
-  applied,
-  interested,
-  declined,
-  previous,
-  hired,
+enum LaunchStatus {
+  launching,
+  loading,
+  launched,
+  error,
 }
 
 enum SnackbarPosition {

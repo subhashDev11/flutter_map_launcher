@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:latlng/latlng.dart';
+import 'package:test_today/core/app_enums.dart';
 import 'package:test_today/core/core.dart';
 import 'package:test_today/data/model/address_res_model.dart';
 import 'package:test_today/data/repository/app_repository.dart';
@@ -11,18 +12,21 @@ class DataCubit extends Cubit<DataState> {
   DataCubit()
       : super(const DataState.init(
           isProcessing: false,
+          launchStatus: LaunchStatus.loading,
         ));
 
   void init() async {
-    emit(state.copyWith(
-      isProcessing: true,
-    ));
+    changeLaunchStatus(LaunchStatus.loading);
     await Future.wait([
       fetchCurrentPosition(),
       getData(),
     ]);
+    changeLaunchStatus(LaunchStatus.launching);
+  }
+
+  void changeLaunchStatus(LaunchStatus status) {
     emit(state.copyWith(
-      isProcessing: false,
+      launchStatus: status,
     ));
   }
 
